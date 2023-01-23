@@ -1,6 +1,6 @@
 package Transport;
 
-public  class Transport {
+public abstract class Transport {
     private  String brand;
     private String model;
     private double engineVolume;
@@ -20,13 +20,9 @@ public  class Transport {
         this.engineVolume = engineVolume;
     }
 
-    public void startMoving() {
+    public abstract void startMoving();
 
-    }
-
-    public void finishMoving() {
-
-    }
+    public abstract void finishMoving();
 
     public String getBrand() {
         return brand;
@@ -54,10 +50,9 @@ public  class Transport {
 
     @Override
     public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                '}';
+        return "Транспорт" +
+                "марка: " + brand  +
+                ", модель: " + model +
+                ", объем двигателяЖ " + engineVolume;
     }
 }
