@@ -1,21 +1,28 @@
 import Transport.Bus;
 import Transport.Cars;
+import Transport.Transport;
 import Transport.Trucks;
+import Transport.drivers.DriverB;
+import Transport.drivers.DriverC;
+import Transport.drivers.DriverD;
 
 public class Main {
     public static void main(String[] args) {
-        Cars lada = new Cars("Lada", "Granta", 1.7);
-        Cars bmw = new Cars("BMW", "X6", 4.2);
-        Cars skoda = new Cars("Skoda", "Octavia", 1.6);
-        Cars hundai = new Cars("Hundai", "Solaris", 1.6);
-        Trucks kamaz = new Trucks("KAMAZ", "6511", 11.76);
-        Trucks kamaz2 = new Trucks("KAMAZ", "65115", 25.11);
-        Trucks man = new Trucks("MAN", "TGS", 10.5);
-        Trucks man2 = new Trucks("MAN", "TGX", 12.4);
-        Bus hundaiBus = new Bus("Hundai", "Aero Express", 12.9);
-        Bus maz = new Bus("MAZ", "203", 11.3);
-        Bus volvo = new Bus("Volvo", "7900", 12.4);
-        Bus kia = new Bus("Kia", "Granbird", 12.4);
+        DriverB driverB = new DriverB("Ворчун Андрей Сергеевич", true, 10);
+        DriverD driverD = new DriverD("Прилипала Сергей Николаевич", true, 22);
+        DriverC driverC = new DriverC("Автобусовозов Николай Петрович", true, 2);
+        Cars lada = new Cars("Lada", "Granta", 1.7, driverB);
+        Cars bmw = new Cars("BMW", "X6", 4.2, driverB);
+        Cars skoda = new Cars("Skoda", "Octavia", 1.6, driverB);
+        Cars hundai = new Cars("Hundai", "Solaris", 1.6, driverB);
+        Trucks kamaz = new Trucks("KAMAZ", "6511", 11.76, driverC);
+        Trucks kamaz2 = new Trucks("KAMAZ", "65115", 25.11, driverC);
+        Trucks man = new Trucks("MAN", "TGS", 10.5, driverC);
+        Trucks man2 = new Trucks("MAN", "TGX", 12.4, driverC);
+        Bus hundaiBus = new Bus("Hundai", "Aero Express", 12.9, driverD);
+        Bus maz = new Bus("MAZ", "203", 11.3, driverD);
+        Bus volvo = new Bus("Volvo", "7900", 12.4, driverD);
+        Bus kia = new Bus("Kia", "Granbird", 12.4, driverD);
 
         System.out.println("Задача №1");
         System.out.println(lada);
@@ -68,6 +75,24 @@ public class Main {
         kia.pitStop();
         kia.bestLapTime();
         kia.maxSpeed();
-
+        System.out.println();
+        System.out.println("Задача №4");
+        showInfo(lada);
+        showInfo(bmw);
+        showInfo(skoda);
+        showInfo(hundai);
+        showInfo(kamaz);
+        showInfo(kamaz2);
+        showInfo(man);
+        showInfo(man2);
+        showInfo(hundaiBus);
+        showInfo(maz);
+        showInfo(volvo);
+        showInfo(kia);
+    }
+    private static void showInfo(Transport<?> transport) {
+        System.out.println("Водитель: "+ transport.getDriver().getFullName() +
+                " управляет автомобилем: "+transport.getBrand() + " " + transport.getModel() +
+        " и будет участвовать в заезде");
     }
 }

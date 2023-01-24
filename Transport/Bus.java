@@ -1,8 +1,11 @@
 package Transport;
 
-public class Bus extends Transport{
-    public Bus(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+import Transport.drivers.DriverC;
+import Transport.drivers.DriverD;
+
+public class Bus extends Transport<DriverD> {
+    public Bus(String brand, String model, double engineVolume, DriverD driverD) {
+        super(brand, model, engineVolume, driverD);
     }
 
     @Override

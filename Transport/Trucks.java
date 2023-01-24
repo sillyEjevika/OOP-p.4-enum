@@ -1,8 +1,12 @@
 package Transport;
 
-public class Trucks extends Transport{
-    public Trucks(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+import Transport.drivers.DriverB;
+import Transport.drivers.DriverC;
+import Transport.drivers.DriverD;
+
+public class Trucks extends Transport<DriverC> {
+    public Trucks(String brand, String model, double engineVolume, DriverC driverC) {
+        super(brand, model, engineVolume, driverC);
     }
 
     @Override

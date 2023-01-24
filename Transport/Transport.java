@@ -1,11 +1,14 @@
 package Transport;
 
-public abstract class Transport implements Competing {
+import Transport.drivers.Driver;
+
+public abstract class Transport<T extends Driver> implements Competing {
     private  String brand;
     private String model;
     private double engineVolume;
+    private T driver;
 
-    public Transport(String brand, String model, double engineVolume) {
+    public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             brand = "default";
         }
@@ -18,6 +21,7 @@ public abstract class Transport implements Competing {
             this.engineVolume = 1.5;
         }
         this.engineVolume = engineVolume;
+        this.driver = driver;
     }
 
     public abstract void startMoving();
@@ -48,11 +52,19 @@ public abstract class Transport implements Competing {
         this.engineVolume = engineVolume;
     }
 
+    public T getDriver() {
+        return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
+
     @Override
     public String toString() {
         return "Транспорт" +
                 "марка: " + brand  +
                 ", модель: " + model +
-                ", объем двигателяЖ " + engineVolume;
+                ", объем двигателя: " + engineVolume;
     }
 }
