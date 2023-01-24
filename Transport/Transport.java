@@ -60,11 +60,14 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
+    public abstract void printType();
+
     @Override
     public String toString() {
         return "Транспорт" +
-                "марка: " + brand  +
+                " марка: " + brand +
                 ", модель: " + model +
                 ", объем двигателя: " + engineVolume;
+
     }
 }
