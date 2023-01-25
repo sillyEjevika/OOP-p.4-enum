@@ -1,6 +1,7 @@
 package Transport;
 
 import Transport.drivers.DriverC;
+import Transport.exaption.DiagnosticFailedExaption;
 
 public class Trucks extends Transport<DriverC> {
     private TruckCarring truckCarring;
@@ -77,6 +78,15 @@ public class Trucks extends Transport<DriverC> {
             System.out.println(truckCarring);
         }else{
             System.out.println("Данных по транспортному средству недостаточно");
+        }
+    }
+
+    @Override
+    public boolean takeDiagnostics() throws DiagnosticFailedExaption {
+        if (getDriver() != null && getDriver().isLicense()) {
+            return true;
+        } else {
+            throw new DiagnosticFailedExaption();
         }
     }
 }

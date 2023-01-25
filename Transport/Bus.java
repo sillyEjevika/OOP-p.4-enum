@@ -1,6 +1,7 @@
 package Transport;
 
 import Transport.drivers.DriverD;
+import Transport.exaption.DiagnosticFailedExaption;
 
 public class Bus extends Transport<DriverD> {
     private BusCapacity busCapacity;
@@ -76,5 +77,10 @@ public class Bus extends Transport<DriverD> {
         }else{
             System.out.println("Данных по транспортному средству недостаточно");
         }
+    }
+
+    @Override
+    public boolean takeDiagnostics() throws DiagnosticFailedExaption {
+        return false;
     }
 }

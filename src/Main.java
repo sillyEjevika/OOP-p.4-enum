@@ -4,6 +4,7 @@ import Transport.Trucks;
 import Transport.drivers.DriverB;
 import Transport.drivers.DriverC;
 import Transport.drivers.DriverD;
+import Transport.exaption.DiagnosticFailedExaption;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class Main {
         DriverD driverD = new DriverD("Прилипала Сергей Николаевич", true, 22);
         DriverC driverC = new DriverC("Автобусовозов Николай Петрович", true, 2);
         Cars lada = new Cars("Lada", "Granta", 1.7, driverB, Cars.CarsTypeOfBody.MINIVAN);
-        Cars bmw = new Cars("BMW", "X6", 4.2, driverB, Cars.CarsTypeOfBody.CROSSOVER);
+        Cars bmw = new Cars("BMW", "X6", 4.2, null, Cars.CarsTypeOfBody.CROSSOVER);
         Cars skoda = new Cars("Skoda", "Octavia", 1.6, driverB, Cars.CarsTypeOfBody.COUPE);
         Cars hundai = new Cars("Hundai", "Solaris", 1.6, driverB, Cars.CarsTypeOfBody.HATCHBACK);
         Trucks kamaz = new Trucks("KAMAZ", "6511", 11.76, driverC, Trucks.TruckCarring.N2);
@@ -88,7 +89,7 @@ public class Main {
         showInfo(maz);
         showInfo(volvo);
         showInfo(kia);
-        System.out.println();*/
+        System.out.println();
         System.out.println("Задача №4 emun");
         System.out.println("Легковые автомобили");
         System.out.println(lada);
@@ -118,8 +119,13 @@ public class Main {
         System.out.println(volvo);
         volvo.printType();
         System.out.println(kia);
-        kia.printType();
-
+        kia.printType();*/
+        System.out.println("Задача №1 исключения");
+        try {
+            bmw.takeDiagnostics();
+        } catch (DiagnosticFailedExaption e) {
+            e.printStackTrace();
+        }
 
 
     }
