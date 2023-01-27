@@ -2,6 +2,8 @@ package Transport;
 import Transport.drivers.DriverB;
 import Transport.exaption.DiagnosticFailedExaption;
 
+import java.util.ArrayList;
+
 public class Cars extends Transport <DriverB> {
     private CarsTypeOfBody rusNameOfBody;
 
