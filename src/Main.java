@@ -1,10 +1,11 @@
-import Transport.Bus;
-import Transport.Cars;
-import Transport.Trucks;
+import Transport.*;
+import Transport.drivers.Driver;
 import Transport.drivers.DriverB;
 import Transport.drivers.DriverC;
 import Transport.drivers.DriverD;
-import Transport.exaption.DiagnosticFailedExaption;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +13,7 @@ public class Main {
         DriverD driverD = new DriverD("Прилипала Сергей Николаевич", true, 22);
         DriverC driverC = new DriverC("Автобусовозов Николай Петрович", true, 2);
         Cars lada = new Cars("Lada", "Granta", 1.7, driverB, Cars.CarsTypeOfBody.MINIVAN);
-        Cars bmw = new Cars("BMW", "X6", 4.2, null, Cars.CarsTypeOfBody.CROSSOVER);
+        Cars bmw = new Cars("BMW", "X6", 4.2, driverB, Cars.CarsTypeOfBody.CROSSOVER);
         Cars skoda = new Cars("Skoda", "Octavia", 1.6, driverB, Cars.CarsTypeOfBody.COUPE);
         Cars hundai = new Cars("Hundai", "Solaris", 1.6, driverB, Cars.CarsTypeOfBody.HATCHBACK);
         Trucks kamaz = new Trucks("KAMAZ", "6511", 11.76, driverC, Trucks.TruckCarring.N2);
@@ -23,6 +24,45 @@ public class Main {
         Bus maz = new Bus("MAZ", "203", 11.3, driverD, Bus.BusCapacity.MIDDLE);
         Bus volvo = new Bus("Volvo", "7900", 12.4, driverD, Bus.BusCapacity.LARGE);
         Bus kia = new Bus("Kia", "Granbird", 12.4, driverD, Bus.BusCapacity.VERY_LARGE);
+        Mechanics mechanics1 = new Mechanics("Петр Сергеев", "Субару", Mechanics.MechanicsType.BUS);
+        Mechanics mechanics11 = new Mechanics("Петр Петров", "Картошка на Районе", Mechanics.MechanicsType.BUS);
+        Mechanics mechanics2 = new Mechanics("Кирилл Федук", "Дженерал Моторс", Mechanics.MechanicsType.CARS);
+        Mechanics mechanics22 = new Mechanics("Кирилл Кироллов", "Путешественники во времени", Mechanics.MechanicsType.CARS);
+        Mechanics mechanics3 = new Mechanics("Федр Федоров", "ПростоКомпания", Mechanics.MechanicsType.TRUCK);
+        Mechanics mechanics33 = new Mechanics("Федр Пастухов", "Конец машинам", Mechanics.MechanicsType.ALL);
+
+        lada.addMechanics(mechanics22);
+        bmw.addMechanics(mechanics33);
+        kamaz2.addMechanics(mechanics3);
+        kamaz.addMechanics(mechanics33);
+        volvo.addMechanics(mechanics11);
+        kia.addMechanics(mechanics33);
+
+
+        List<Transport<?>> typeOfCars = new ArrayList<>();
+        typeOfCars.add(lada);
+        typeOfCars.add(bmw);
+        typeOfCars.add(skoda);
+        typeOfCars.add(hundai);
+        List<Transport<?>> typeOfBus = new ArrayList<>();
+        typeOfBus.add(hundaiBus);
+        typeOfBus.add(maz);
+        typeOfBus.add(volvo);
+        typeOfBus.add(kia);
+        List<Transport<?>> typeOfTruck = new ArrayList<>();
+        typeOfTruck.add(kamaz);
+        typeOfTruck.add(kamaz2);
+        typeOfTruck.add(man);
+        typeOfTruck.add(man2);
+        List<Driver> drivers = new ArrayList<>();
+        drivers.add(driverB);
+        drivers.add(driverC);
+        drivers.add(driverD);
+
+        for (Transport<?> transport : typeOfCars) {
+            System.out.println(transport + " " + transport.getDriver() + " "+ transport.getMechanics());
+        }
+
 
        /* System.out.println("Задача №1");
         System.out.println(lada);
@@ -119,19 +159,19 @@ public class Main {
         System.out.println(volvo);
         volvo.printType();
         System.out.println(kia);
-        kia.printType();*/
+        kia.printType();
         System.out.println("Задача №1 исключения");
         try {
             bmw.takeDiagnostics();
         } catch (DiagnosticFailedExaption e) {
             e.printStackTrace();
         }
-
-
-    }
+        */
    /*private static void showInfo(Transport<?> transport) {
         System.out.println("Водитель: "+ transport.getDriver().getFullName() +
                 " управляет автомобилем: "+transport.getBrand() + " " + transport.getModel() +
         " и будет участвовать в заезде");
     }*/
+    }
+
 }

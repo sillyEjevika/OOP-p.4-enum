@@ -3,11 +3,15 @@ package Transport;
 import Transport.drivers.Driver;
 import Transport.exaption.DiagnosticFailedExaption;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private  String brand;
     private String model;
     private double engineVolume;
     private T driver;
+    private final List<Mechanics> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
@@ -64,6 +68,16 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void printType();
 
     public abstract boolean takeDiagnostics() throws DiagnosticFailedExaption;
+
+    public List<Mechanics> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanics(Mechanics mechanic) {
+        mechanics.add(mechanic);
+    }
+
+
 
     @Override
     public String toString() {
