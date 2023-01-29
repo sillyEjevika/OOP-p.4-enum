@@ -3,15 +3,17 @@ package Transport;
 import Transport.drivers.Driver;
 import Transport.exaption.DiagnosticFailedExaption;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private  String brand;
     private String model;
     private double engineVolume;
     private T driver;
-    private final List<Mechanics> mechanics = new ArrayList<>();
+    //private final List<Mechanics> mechanics = new ArrayList<>();
+    private final Set<Mechanics> mechanics = new HashSet<>();
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
@@ -69,15 +71,13 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public abstract boolean takeDiagnostics() throws DiagnosticFailedExaption;
 
-    public List<Mechanics> getMechanics() {
+    public Set<Mechanics> getMechanics() {
         return mechanics;
     }
 
     public void addMechanics(Mechanics mechanic) {
         mechanics.add(mechanic);
     }
-
-
 
     @Override
     public String toString() {
