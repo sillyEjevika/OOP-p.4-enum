@@ -1,6 +1,7 @@
 package Transport;
 
 import Transport.drivers.Driver;
+import Transport.exaption.DiagnosticFailedExaption;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private  String brand;
@@ -60,11 +61,16 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
+    public abstract void printType();
+
+    public abstract boolean takeDiagnostics() throws DiagnosticFailedExaption;
+
     @Override
     public String toString() {
         return "Транспорт" +
-                "марка: " + brand  +
+                " марка: " + brand +
                 ", модель: " + model +
                 ", объем двигателя: " + engineVolume;
+
     }
 }

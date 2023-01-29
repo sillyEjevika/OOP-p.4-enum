@@ -38,7 +38,6 @@ public abstract class Driver {
     public int getExperience() {
         return experience;
     }
-
     public void setExperience(int experience) {
         this.experience = experience;
     }
