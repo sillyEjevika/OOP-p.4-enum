@@ -5,6 +5,7 @@ import Transport.drivers.DriverC;
 import Transport.drivers.DriverD;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -61,6 +62,11 @@ public class Main {
 
         for (Transport<?> transport : typeOfCars) {
             System.out.println(transport + " " + transport.getDriver() + " "+ transport.getMechanics());
+        }
+
+        Iterator<Driver> driverIterator = drivers.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
         }
 
 
