@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.Objects;
+
 public class Mechanics {
     public enum MechanicsType {
         CARS,
@@ -48,6 +50,19 @@ public class Mechanics {
 
     public void setMechanicsType(MechanicsType mechanicsType) {
         this.mechanicsType = mechanicsType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Mechanics)) return false;
+        Mechanics mechanics = (Mechanics) o;
+        return Objects.equals(nameSurname, mechanics.nameSurname) && Objects.equals(company, mechanics.company) && mechanicsType == mechanics.mechanicsType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameSurname, company, mechanicsType);
     }
 
     @Override
