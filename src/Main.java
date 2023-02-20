@@ -72,13 +72,13 @@ public class Main {
                 transportMechanicMap.put(racer, mechanic);
             }
         }
-        Set<String> mechanics = new HashSet<>();
-        mechanics.add(String.valueOf(mechanics1));
-        mechanics.add(String.valueOf(mechanics11));
-        mechanics.add(String.valueOf(mechanics1));
-        mechanics.add(String.valueOf(mechanics2));
-        mechanics.add(String.valueOf(mechanics2));
-        System.out.println(Arrays.toString(mechanics.toArray()));
+        Set<Driver> driver = new HashSet<>();
+        driver.add(driverB);
+        driver.add(driverD);
+        driver.add(driverB);
+        driver.add(driverC);
+        driver.add(driverB);
+        System.out.println(Arrays.toString(drivers.toArray()));
 
        /* System.out.println("Задача №1");
         System.out.println(lada);
