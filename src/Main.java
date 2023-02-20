@@ -4,8 +4,7 @@ import Transport.drivers.DriverB;
 import Transport.drivers.DriverC;
 import Transport.drivers.DriverD;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -60,9 +59,26 @@ public class Main {
         drivers.add(driverD);
 
         for (Transport<?> transport : typeOfCars) {
-            System.out.println(transport + " " + transport.getDriver() + " "+ transport.getMechanics());
+            System.out.println(transport + " " + transport.getDriver() + " " + transport.getMechanics());
         }
 
+        Iterator<Driver> driverIterator = drivers.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
+        }
+        Map<Transport<?>,Mechanics> transportMechanicMap = new HashMap<>();
+        for (Transport<?> racer: typeOfCars) {
+            for (Mechanics mechanic : racer.getMechanics()){
+                transportMechanicMap.put(racer, mechanic);
+            }
+        }
+        Set<Driver> driver = new HashSet<>();
+        driver.add(driverB);
+        driver.add(driverD);
+        driver.add(driverB);
+        driver.add(driverC);
+        driver.add(driverB);
+        System.out.println(Arrays.toString(drivers.toArray()));
 
        /* System.out.println("Задача №1");
         System.out.println(lada);
